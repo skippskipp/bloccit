@@ -4,8 +4,6 @@
 
 Made with my mentor at [Bloc](http://bloc.io).
 
-Things you may want to cover:
-
 * Ruby 2.3.3
 
 * System dependencies
