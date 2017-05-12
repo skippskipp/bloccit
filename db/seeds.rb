@@ -17,6 +17,13 @@ posts = Post.all
   )
 end
 
+# Find a Post titled Maynard, or create a new one
+Post.find_or_create_by!(title: 'Jimmy Under a Dead Ohio Sky') do |post|
+  post.body = 'Defending his light and wondering, Where the hell have I been? Sleeping lost in the mud. So glad that I have found you. I am wide awake and heading Home'
+end
+
+Comment.find_or_create_by(body: 'Eleven has been and will be waiting', post: Post.find(101))
+
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
