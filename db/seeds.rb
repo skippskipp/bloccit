@@ -39,6 +39,17 @@ questions = Question.all
 end
 posts = Post.all
 
+#Create Sponsored Posts
+50.times do
+  SponsoredPost.create!(
+  topic: topics.sample,
+  title: RandomData.random_sentence,
+  body: RandomData.random_paragraph,
+  price: RandomData.random_integer
+  )
+end
+sponsored_posts = SponsoredPost.all
+
 # Create Comments
 100.times do
   Comment.create!(
@@ -57,6 +68,7 @@ Comment.find_or_create_by!(body: 'Eleven has been and will be waiting', post: my
 puts "Seed finished"
 puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
+puts "#{SponsoredPost.count} sponsored posts created"
 puts "#{Comment.count} comments created"
 puts "#{Advertisement.count} ads created"
 puts "#{Question.count} questions created"
