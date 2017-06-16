@@ -21,7 +21,7 @@ class AdvertisementsController < ApplicationController
       flash[:notice] = "Ad was saved."
       redirect_to @advertisement
     else
-      flash.now[:alert] = "There was an error saving the ad. Please try again."
+      flash.now[:alert] = "There was an error saving the ad. Please try again. Nothing over $500."
       render :new
     end
   end
