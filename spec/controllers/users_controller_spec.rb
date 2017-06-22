@@ -4,7 +4,7 @@ RSpec.describe UsersController, type: :controller do
 
   let(:new_user_attributes) do
     {
-        name: "BlocHead",
+        name: "Bloc Head",
         email: "blochead@bloc.io",
         password: "blochead",
         password_confirmation: "blochead"
@@ -55,5 +55,5 @@ RSpec.describe UsersController, type: :controller do
       expect(assigns(:user).password_confirmation).to eq new_user_attributes[:password_confirmation]
     end
   end
-  
+
 end
