@@ -25,6 +25,6 @@ module RandomData
   end
 
   def self.random_integer
-    1 + rand(2000)
+    1 + rand(500)
   end
 end
