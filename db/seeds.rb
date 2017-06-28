@@ -1,5 +1,16 @@
 require 'random_data'
 
+# Create Users
+5.times do
+  User.create!(
+  name: RandomData.random_name,
+  email: RandomData.random_email,
+  password: RandomData.random_sentence
+  )
+end
+users = User.all
+
+
 # Create Topics
 15.times do
   Topic.create!(
@@ -32,6 +43,7 @@ questions = Question.all
 #Create Posts
 50.times do
   Post.create!(
+  user: users.sample,
   topic: topics.sample,
   title: RandomData.random_sentence,
   body: RandomData.random_paragraph
@@ -58,14 +70,14 @@ sponsored_posts = SponsoredPost.all
   )
 end
 
-# Find a Post titled Maynard, or create a new one
-mypost = Post.find_or_create_by!(title: 'Jimmy Under a Dead Ohio Sky') do |post|
-  post.body = 'Defending his light and wondering, Where the hell have I been? Sleeping lost in the mud. So glad that I have found you. I am wide awake and heading Home'
-end
-
-Comment.find_or_create_by!(body: 'Eleven has been and will be waiting', post: mypost)
+user = User.first
+user.update_attributes!(
+  email: 'scott.kipp@gmail.com',
+  password: 'helloworld'
+)
 
 puts "Seed finished"
+puts "#{User.count} users created"
 puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{SponsoredPost.count} sponsored posts created"
