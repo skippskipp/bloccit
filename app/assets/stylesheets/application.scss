@@ -1,12 +1,30 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.user-detail {
+  width: 80%;
+  display: inline-block;
+  float: left;
+  text-align: right;
+}
+
+.user-detail a {
+  display: block;
+}
+
 .user-info {
-  margin-top: 9px;
+  width: 40%;
 }
 
 .nav {
   margin-top: 5px;
+}
+
+.profile {
+  width: auto;
+  height: 42px;
+  margin-left: 15px;
+  float: right;
 }
 @import url('https://fonts.googleapis.com/css?family=Baloo');
 @import '**/*'

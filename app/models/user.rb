@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   before_save { self.email = email.downcase if email.present? }
   before_save :capitalize_name
+  before_save { self.role ||= :member }
 
   validates :name, length: { minimum: 1, maximum: 100 }, presence: true
   validates :password, presence: true, length: { minimum: 6 }, if: "password_digest.nil?"
@@ -13,14 +14,16 @@ class User < ActiveRecord::Base
             length: { minimum: 3, maximum: 254 }
   has_secure_password
 
-def capitalize_name
-  if name
-    namer = []
-    name.split.each do |initial|
-      namer << initial.capitalize
+  enum role: [:member, :admin]
+
+  def capitalize_name
+    if name
+      namer = []
+      name.split.each do |initial|
+        namer << initial.capitalize
+      end
+      self.name = namer.join(" ")
     end
-    self.name = namer.join(" ")
   end
-end
 
 end
