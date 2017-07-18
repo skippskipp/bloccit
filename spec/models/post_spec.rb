@@ -28,6 +28,12 @@ RSpec.describe Post, type: :model do
     end
   end
 
+  describe "auto #up vote for your own post" do
+    it "#up votes user's post for them automatically after posting" do
+      expect( post.points ).to eq( 1 )
+    end
+  end
+
   describe "voting" do
     before do
       3.times { post.votes.create!(value: 1) }
