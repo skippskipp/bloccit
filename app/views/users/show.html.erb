@@ -28,3 +28,25 @@
 
 <h2>Comments</h2>
 <%= render @user.comments %>
+
+<h2>Favorited Posts</h2>
+  <div class="row">
+    <div class="col-md-8">
+    <% posts = Post.all %>
+    <% posts.each do |post| %>
+      <% if current_user.favorite_for(post) %>
+        <% author = post.user %>
+        <% author_avatar_url = author.avatar_url(36) %>
+        <% if author_avatar_url %>
+          <div class="media-left">
+            <%= image_tag author_avatar_url, class: 'media-object' %>
+          </div>
+        <% end %>
+        <div class="media-right">
+        <%= render partial: 'votes/voting', locals: { post: post } %>
+        <%= render partial: 'posts/post', locals: { post: post } %>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
